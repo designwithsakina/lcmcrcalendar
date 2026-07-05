@@ -1,0 +1,10 @@
+# Local drag-and-drop deploy copy (Netlify serves index.html from the repo root instead)
+deploy/
+
+# Editor / tooling
+.claude/
+
+# OS junk
+Thumbs.db
+.DS_Store
+*.log
