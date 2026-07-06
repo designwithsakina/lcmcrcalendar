@@ -300,17 +300,17 @@
   // Pre-loaded club calendar (Leo year Jun 2026 – May 2027). Edit via Owner mode + Publish copy.
   const DEFAULT_DATA = /*__DATA__*/{
     "2026-06":{events:[{id:'e1',day:28,cat:'leadership',title:'Preliminary Council Meet & Club Officer Schooling'}],priorities:[]},
-    "2026-07":{events:[{id:'jul1',day:12,cat:'service',title:'Pulse of Life – Creatives'},{id:'jul2',day:25,cat:'service',title:'Mega Health Camp'},{id:'jul3',day:26,cat:'fellowship',title:'District Installation'}],priorities:[]},
-    "2026-08":{events:[{id:'aug1',day:1,cat:'service',title:'Meal Donation'},{id:'aug2',day:8,cat:'leadership',title:'LAS – Leo Advancement Session'},{id:'aug3',day:9,cat:'leadership',title:'Multiple Installation'},{id:'aug4',day:15,end:16,cat:'fellowship',title:'District EC Mixer'},{id:'aug5',day:23,cat:'leadership',title:'Club Installation'},{id:'aug6',day:23,cat:'service',title:'Service Activity'},{id:'aug7',day:28,cat:'fellowship',title:'Rakhi Celebration'}],priorities:[]},
-    "2026-09":{events:[{id:'sep1',day:12,cat:'leadership',title:'RCZC Visit'},{id:'sep2',day:12,cat:'leadership',title:'Club Orientation'},{id:'sep3',day:14,cat:'fellowship',title:'Ganpati Fellowship (Pankaj)'},{id:'sep4',day:25,end:27,cat:'leadership',title:'FLC – Fellowship Leadership Conclave'}],priorities:[]},
+    "2026-07":{events:[{id:'jul1',day:12,cat:'service',title:'Pulse of Life – District'},{id:'jul2',day:25,cat:'service',title:'Mega Health Camp'},{id:'jul3',day:25,cat:'fellowship',title:'District Installation'}],priorities:[]},
+    "2026-08":{events:[{id:'aug1',day:1,cat:'service',title:'Meal Donation'},{id:'aug2',day:8,cat:'leadership',title:'LAS – Leo Advancement Session'},{id:'aug3',day:9,cat:'leadership',title:'Multiple Installation'},{id:'aug4',day:15,end:16,cat:'fellowship',title:'District EC Mixer'},{id:'aug5',day:23,cat:'leadership',title:'Club Installation'},{id:'aug6',day:23,cat:'service',title:'Service Activity'},{id:'aug7',day:28,cat:'fellowship',title:'Raksha Bandhan'}],priorities:[]},
+    "2026-09":{events:[{id:'sep1',day:12,cat:'leadership',title:'RCZC Visit'},{id:'sep2',day:12,cat:'leadership',title:'Club Orientation'},{id:'sep3',day:14,cat:'fellowship',title:'Ganpati Celebration'},{id:'sep4',day:25,end:27,cat:'leadership',title:'FLC – Fellowship Leadership Conclave'}],priorities:[]},
     "2026-10":{events:[{id:'e8',day:1,allMonth:true,cat:'important',title:'Membership Growth Month'},{id:'e9',day:25,cat:'service',title:'Project Prayatna'}],priorities:[]},
     "2026-11":{events:[{id:'e10',day:15,cat:'leadership',title:'1st Council Meet'},{id:'e11',day:15,cat:'fellowship',title:'Leo Lion Sports Day'}],priorities:[]},
     "2026-12":{events:[{id:'e13',day:6,cat:'service',title:'Miles For Change – Leo Multiple 3231 Marathon'}],priorities:[]},
     "2027-01":{events:[{id:'e14',day:13,cat:'birthday',title:'Melvin Jones Birthday'},{id:'e15',day:24,cat:'leadership',title:'2nd Council Meet'}],priorities:[]},
-    "2027-02":{events:[{id:'e16',day:7,cat:'leadership',title:'2nd Multiple Council Meet & Convention Launch'},{id:'e17',day:20,end:21,cat:'leadership',title:'FLEO 4.0'},{id:'e18',day:21,cat:'service',title:'Pulse of Life 3 – District Blood Donation Drive'}],priorities:[]},
+    "2027-02":{events:[{id:'e16',day:7,cat:'leadership',title:'2nd Multiple Council Meet'},{id:'e17',day:20,end:21,cat:'leadership',title:'FLEO 4.0'},{id:'e18',day:21,cat:'service',title:'Pulse of Life 3 – District Blood Donation Drive'}],priorities:[]},
     "2027-03":{events:[{id:'e19',day:7,cat:'service',title:'TRIATHON – 3 Races for a Cause'}],priorities:[]},
     "2027-04":{events:[{id:'e20',day:1,allMonth:true,cat:'important',title:'Leo Awareness Month'},{id:'e21',day:11,cat:'leadership',title:'ADC & 3rd Council Meet'}],priorities:[]},
-    "2027-05":{events:[{id:'e22',day:15,cat:'fellowship',title:'Awards Night'},{id:'e23',day:28,end:30,cat:'leadership',title:'Leo Multiple Convention'}],priorities:[]}
+    "2027-05":{events:[{id:'e22',day:15,cat:'fellowship',title:'District Awards Night'},{id:'e23',day:28,end:30,cat:'leadership',title:'Leo Multiple Convention'}],priorities:[]}
   }/*__/DATA__*/;
 
   const CATS = {
@@ -322,20 +322,16 @@
   };
   const CARD_COLOR = {service:'var(--maroon)',leadership:'var(--orange)',fellowship:'var(--sage-deep)',birthday:'var(--rose)',important:'var(--charcoal)',priorities:'var(--gold-deep)'};
   // singular labels for chip tooltips + day popup (covers 'priorities' which isn't in CATS)
-  const CAT_SINGULAR = {service:'Service Event',leadership:'Leadership Event',fellowship:'Fellowship Event',birthday:'Birthday',important:'Important Date',priorities:'Top Priority'};
+  const CAT_SINGULAR = {service:'Service Event',leadership:'Leadership Event',fellowship:'Fellowship Event',birthday:'Birthday',important:'Important Date',priorities:'Recurring Event'};
 
   // Recurring annual observances — same date every year, shown (read-only) as Important Dates. m=1-12.
   const ANNUAL = [
-    // January
-    {m:1,d:9,t:"Pravasi Bharatiya Divas (NRI Day)"},
-    {m:1,d:10,t:"World Hindi Day"},
+    // January    {m:1,d:10,t:"World Hindi Day"},
     {m:1,d:11,t:"National Human Trafficking Awareness Day"},
     {m:1,d:12,t:"National Youth Day (Swami Vivekananda Jayanti)"},
     {m:1,d:15,t:"Indian Army Day"},
     {m:1,d:24,t:"National Girl Child Day (India)"},
-    {m:1,d:24,t:"International Day of Education"},
-    {m:1,d:25,t:"National Voters' Day & National Tourism Day (India)"},
-    {m:1,d:26,t:"Republic Day (India)"},
+    {m:1,d:24,t:"International Day of Education"},    {m:1,d:26,t:"Republic Day (India)"},
     {m:1,d:28,t:"Data Privacy Day"},
     {m:1,d:30,t:"Martyrs' Day (Shaheed Diwas)"},
     // February
@@ -364,35 +360,23 @@
     {m:4,d:22,t:"Earth Day"},
     {m:4,d:23,t:"World Book Day"},
     // May
-    {m:5,d:1,t:"International Labour Day & Maharashtra Day"},
-    {m:5,d:3,t:"World Press Freedom Day"},
-    {m:5,d:8,t:"World Red Cross Day & World Thalassaemia Day"},
-    {m:5,d:11,t:"National Technology Day (India)"},
-    {m:5,d:12,t:"International Nurses Day"},
-    {m:5,d:15,t:"International Day of Families"},
+    {m:5,d:1,t:"International Labour Day & Maharashtra Day"},    {m:5,d:8,t:"World Red Cross Day & World Thalassaemia Day"},
+    {m:5,d:11,t:"National Technology Day (India)"},    {m:5,d:15,t:"International Day of Families"},
     {m:5,d:21,t:"National Anti-Terrorism Day (India)"},
     {m:5,d:22,t:"International Day for Biological Diversity"},
-    // June
-    {m:6,d:1,t:"World Milk Day"},
-    {m:6,d:3,t:"World Bicycle Day"},
+    // June    {m:6,d:3,t:"World Bicycle Day"},
     {m:6,d:5,t:"World Environment Day"},
     {m:6,d:8,t:"World Ocean Day"},
     {m:6,d:12,t:"World Day Against Child Labour"},
-    {m:6,d:14,t:"World Blood Donor Day"},
-    {m:6,d:20,t:"World Refugee Day"},
-    {m:6,d:21,t:"International Day of Yoga & World Music Day"},
+    {m:6,d:14,t:"World Blood Donor Day"},    {m:6,d:21,t:"International Day of Yoga & World Music Day"},
     {m:6,d:23,t:"International Olympic Day"},
     {m:6,d:26,t:"International Day Against Drug Abuse"},
     // July
     {m:7,d:1,t:"National Doctors' Day (India)"},
     {m:7,d:11,t:"World Population Day"},
-    {m:7,d:17,t:"World Day for International Justice"},
-    {m:7,d:18,t:"Nelson Mandela International Day"},
-    {m:7,d:28,t:"World Nature Conservation Day & World Hepatitis Day"},
+    {m:7,d:17,t:"World Day for International Justice"},    {m:7,d:28,t:"World Nature Conservation Day & World Hepatitis Day"},
     {m:7,d:29,t:"International Tiger Day"},
-    // August
-    {m:8,d:6,t:"Hiroshima Day"},
-    {m:8,d:7,t:"National Handloom Day (India)"},
+    // August    {m:8,d:7,t:"National Handloom Day (India)"},
     {m:8,d:12,t:"International Youth Day"},
     {m:8,d:15,t:"Independence Day (India)"},
     {m:8,d:19,t:"World Photography Day & World Humanitarian Day"},
@@ -407,57 +391,43 @@
     {m:9,d:15,t:"International Day of Democracy"},
     {m:9,d:21,t:"International Chai Day & International Day of Peace"},
     {m:9,d:27,t:"World Tourism Day"},
-    // October
-    {m:10,d:1,t:"International Day of Older Persons"},
-    {m:10,d:3,t:"World Smile Day"},
-    {m:10,d:4,t:"World Animal Day"},
-    {m:10,d:5,t:"World Teachers' Day"},
-    {m:10,d:8,t:"Indian Air Force Day"},
+    // October    {m:10,d:3,t:"World Smile Day"},
+    {m:10,d:4,t:"World Animal Day"},    {m:10,d:8,t:"Indian Air Force Day"},
     {m:10,d:10,t:"World Mental Health Day"},
     {m:10,d:11,t:"International Day of the Girl Child"},
     {m:10,d:17,t:"International Day for the Eradication of Poverty"},
     {m:10,d:21,t:"Police Commemoration Day"},
     {m:10,d:24,t:"United Nations Day & World Polio Day"},
-    {m:10,d:31,t:"Rashtriya Ekta Diwas (National Unity Day) & World Cities Day"},
-    // November
-    {m:11,d:5,t:"World Tsunami Awareness Day"},
-    {m:11,d:7,t:"National Cancer Awareness Day (India)"},
-    {m:11,d:9,t:"National Legal Services Day (India)"},
-    {m:11,d:11,t:"National Education Day (India)"},
+    {m:10,d:31,t:"Rashtriya Ekta Diwas (National Unity Day)"},
+    // November    {m:11,d:7,t:"National Cancer Awareness Day (India)"},    {m:11,d:11,t:"National Education Day (India)"},
     {m:11,d:12,t:"World Pneumonia Day"},
     {m:11,d:13,t:"World Kindness Day"},
     {m:11,d:14,t:"Children's Day (India) & World Diabetes Day"},
     {m:11,d:18,t:"National Entrepreneurs Day"},
-    {m:11,d:19,t:"International Men's Day"},
-    {m:11,d:20,t:"Universal Children's Day"},
-    {m:11,d:21,t:"World Television Day"},
+    {m:11,d:19,t:"International Men's Day"},    {m:11,d:21,t:"World Television Day"},
     {m:11,d:25,t:"International Day for the Elimination of Violence against Women"},
     // December
     {m:12,d:2,t:"National Pollution Control Day"},
     {m:12,d:3,t:"International Day of Persons with Disabilities"},
     {m:12,d:4,t:"Indian Navy Day"},
     {m:12,d:5,t:"International Leo Day"},
-    {m:12,d:10,t:"Human Rights Day"},
-    {m:12,d:12,t:"Universal Health Coverage Day"},
-    {m:12,d:23,t:"National Farmers' Day"}
+    {m:12,d:10,t:"Human Rights Day"},    {m:12,d:23,t:"National Farmers' Day"}
   ];
 
   // Recurring club events by rule. Active only within [RECUR_FROM, RECUR_TO] inclusive. Read-only.
   const RECUR_FROM = {y:2026, m:6};  // July 2026 (m is 0-based)
   const RECUR_TO   = {y:2027, m:6};  // July 2027
-  // All recurring club events live under the 'priorities' category → shown in the Top Priorities card (gold on the grid).
+  // All recurring club events live under the 'priorities' category → shown in the Recurring Events card (gold on the grid).
   const RECUR = [
-    {t:"Pitch Saturday",                    cat:'priorities', nth:2, wd:6},   // 2nd Saturday
-    {t:"BoD Meeting",                       cat:'priorities', nth:3, wd:5},   // 3rd Friday
-    {t:"Carter Khabar",                     cat:'priorities', day:2},          // 2nd of month
-    {t:"Monthly Event Calendar Released",   cat:'priorities', day:3},          // 3rd of month
-    {t:"Roar in a Shell (Quarterly Bulletin)", cat:'priorities', day:1, quarterMonths:[7,10,1,4]} // once a quarter
+    {t:"Pitch Saturday",                  cat:'priorities', nth:2, wd:6},   // 2nd Saturday
+    {t:"BoD Meeting",                     cat:'priorities', nth:3, wd:5},   // 3rd Friday
+    {t:"Carter Khabar (Newsletter)",      cat:'priorities', day:2},          // 2nd of month
+    {t:"Monthly Event Calendar Release",  cat:'priorities', day:3},          // 3rd of month
+    {t:"Quarter Bulletin",                cat:'priorities', day:1, quarterMonths:[10,1,4]} // once a quarter (Oct/Jan/Apr)
   ];
 
   // Member birthdays — recur every year (read-only), shown as rose 🎂 chips + in the Birthdays card. m=1-12.
-  const BIRTHDAYS = [
-    {m:1,d:1,n:"Ninad Waingankar"},
-    {m:2,d:15,n:"Chinmay Salkar"},
+  const BIRTHDAYS = [    {m:2,d:15,n:"Chinmay Salkar"},
     {m:3,d:6,n:"Rohit Butola"},
     {m:3,d:7,n:"Sakina Abbas"},
     {m:4,d:2,n:"Parth Parekh"},
@@ -655,7 +625,7 @@
 
   function prioritiesCard(){
     const card=document.createElement('div'); card.className='card prio';
-    card.innerHTML='<div class="card-h" style="--ch:'+CARD_COLOR.priorities+'"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg></span>Top Priorities</div><div class="card-b"></div><div class="card-foot"></div>';
+    card.innerHTML='<div class="card-h" style="--ch:'+CARD_COLOR.priorities+'"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm0-14c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"/></svg></span>Recurring Events</div><div class="card-b"></div><div class="card-foot"></div>';
     const body=card.querySelector('.card-b');
     const recurs=allEvents().filter(e=>e.cat==='priorities').sort((a,b)=>a.day-b.day);
     const list=md().priorities;
@@ -681,8 +651,8 @@
     });
     const add=document.createElement('button'); add.className='addrow';
     add.style.setProperty('--c-accent',CARD_COLOR.priorities);
-    add.textContent='+ Add priority';
-    add.onclick=()=>{ const t=prompt('New priority:'); if(t&&t.trim()){ md().priorities.push({id:uid(),text:t.trim(),star:false}); persist(); renderCards(); } };
+    add.textContent='+ Add item';
+    add.onclick=()=>{ const t=prompt('New item:'); if(t&&t.trim()){ md().priorities.push({id:uid(),text:t.trim(),star:false}); persist(); renderCards(); } };
     card.querySelector('.card-foot').appendChild(add);
     return card;
   }
